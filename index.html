@@ -16,14 +16,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
       font-family: Arial, Helvetica, sans-serif;
+      overflow: hidden;
     }
 
     h1 {
       font-size: 64px;
       color: #2b2b2b;
       animation: float 4s ease-in-out infinite;
+      text-align: center;
     }
 
     @keyframes float {
@@ -35,6 +36,24 @@
 </head>
 
 <body>
-  <h1>Hello world</h1>
+  <h1 id="text">Loading…</h1>
+
+  <script>
+    const host = window.location.hostname;
+    const textEl = document.getElementById('text');
+
+    if (host === 'helloworld.shvedov.me') {
+      textEl.textContent = 'Hello, World 👋';
+      document.title = 'Hello World';
+    } 
+    else if (host === 'www.shvedov.me' || host === 'shvedov.me') {
+      textEl.textContent = 'This is my main page';
+      document.title = 'Main page';
+    } 
+    else {
+      textEl.textContent = 'Welcome';
+      document.title = 'Welcome';
+    }
+  </script>
 </body>
 </html>
