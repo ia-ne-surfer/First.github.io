@@ -14,7 +14,7 @@
     }
 .word {
   position: absolute;
-  font-size: 32px;
+  font-size: 40px;
   color: #2b2b2b;
   animation: float 4s ease-in-out infinite;
 }
@@ -39,17 +39,31 @@
   <script>
     const container = document.getElementById('container');
     const COUNT = 10;
+const cols = 5; // сколько "столбцов"
+const rows = Math.ceil(COUNT / cols);
 
-    for (let i = 0; i < COUNT; i++) {
-      const el = document.createElement('div');
-      el.className = 'word';
-      el.textContent = 'HelloWorld';
+const cellWidth  = window.innerWidth / cols;
+const cellHeight = window.innerHeight / rows;
+const margin = 20;
 
-      el.style.left = Math.random() * 100 + 'vw';
-      el.style.top  = Math.random() * 100 + 'vh';
-      el.style.animationDelay = Math.random() * 4 + 's';
+for (let i = 0; i < COUNT; i++) {
+  const el = document.createElement('div');
+  el.className = 'word';
+  el.textContent = 'HelloWorld';
 
-      container.appendChild(el);
+  const col = i % cols;
+  const row = Math.floor(i / cols);
+
+  const x = col * cellWidth + Math.random() * (cellWidth - margin * 2) + margin;
+  const y = row * cellHeight + Math.random() * (cellHeight - margin * 2) + margin;
+
+  el.style.left = x + 'px';
+  el.style.top  = y + 'px';
+
+  el.style.animationDelay = Math.random() * 4 + 's';
+
+  container.appendChild(el);
+
     }
   </script>
 </body>
