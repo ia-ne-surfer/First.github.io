@@ -39,32 +39,32 @@
   <script>
     const container = document.getElementById('container');
     const COUNT = 10;
-const cols = 5; // сколько "столбцов"
-const rows = Math.ceil(COUNT / cols);
+    const cols = 5; // сколько "столбцов"
+    const rows = Math.ceil(COUNT / cols);
 
-const cellWidth  = window.innerWidth / cols;
-const cellHeight = window.innerHeight / rows;
-const margin = 20;
+    const cellWidth  = window.innerWidth / cols;
+    const cellHeight = window.innerHeight / rows;
+    const margin = 20;
 
-for (let i = 0; i < COUNT; i++) {
-  const el = document.createElement('div');
-  el.className = 'word';
-  el.textContent = 'HelloWorld';
+    for (let i = 0; i < COUNT; i++) {
+      const el = document.createElement('div');
+      el.className = 'word';
+      el.textContent = 'HelloWorld';
 
-  const col = i % cols;
-  const row = Math.floor(i / cols);
+      const col = i % cols;
+      const row = Math.floor(i / cols);
+    
+      const x = col * cellWidth + Math.random() * (cellWidth - margin * 2) + margin;
+      const y = row * cellHeight + Math.random() * (cellHeight - margin * 2) + margin;
+    
+      el.style.left = x + 'px';
+      el.style.top  = y + 'px';
+    
+      el.style.animationDelay = Math.random() * 4 + 's';
+    
+      container.appendChild(el);
 
-  const x = col * cellWidth + Math.random() * (cellWidth - margin * 2) + margin;
-  const y = row * cellHeight + Math.random() * (cellHeight - margin * 2) + margin;
-
-  el.style.left = x + 'px';
-  el.style.top  = y + 'px';
-
-  el.style.animationDelay = Math.random() * 4 + 's';
-
-  container.appendChild(el);
-
-    }
+                                    }
   </script>
 </body>
 </html>
